@@ -14,7 +14,6 @@ export class DatasetService {
 
     async getDataset(id) {
         try {
-            console.log('Getting dataset with id: '+id);
             const dataset = await this.mongo_db.collection('datasets').findOne({ _id: new ObjectId(id) });
             return dataset;
         } catch (error) {

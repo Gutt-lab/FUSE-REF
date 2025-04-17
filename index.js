@@ -8,7 +8,7 @@ import { MongoConfig } from './config/mongo.config.js';
 
 import { createDatasetRoutes } from './src/routes/datasetRoutes.js';
 import { createDataIngestionRoutes } from './src/routes/dataIngestionRoutes.js';
-
+import { createMetricsRoutes } from './src/routes/metricsRoutes.js';
 
 dotenv.config();
 
@@ -29,6 +29,7 @@ async function startServer() {
 
         app.use('/datasets', createDatasetRoutes(_mongo_db));
         app.use('/dataingestion', createDataIngestionRoutes(_mongo_db));
+        app.use('/metrics', createMetricsRoutes(_mongo_db));
         app.listen(process.env.PORT, () => {
             console.log(`Server is running on port ${process.env.PORT}`);
         });

@@ -1,0 +1,181 @@
+{
+    "type": "object",
+    "title": "XPCS Dataset Schema",
+    "version": "1.0.0",
+    "properties": {        
+        "experiment_setup": {
+            "beamline": { 
+                "label": "Beamline",
+                "type": "string", 
+                "ui_type": "select", 
+                "options":[
+                    "P10@PETRA III",
+                    "MID@EuXFEL",
+                    "ID10@ESRF",
+                    "ID02@ESRF"
+                ]        
+            },
+            "temprature_C": { 
+                "label": "Temperature [C°]",
+                "type": "number", 
+                "min": -200, 
+                "max": 200, 
+                "ui_type": "number" 
+            },
+            "beam_x_size_microns": { 
+                "label": "Beam X Size [µm]",
+                "type": "number", 
+                "min": 0, 
+                "max": 1000, 
+                "ui_type": "number" 
+            },
+            "beam_y_size_microns": { 
+                "label": "Beam Y Size [µm]",
+                "type": "number", 
+                "min": 0, 
+                "max": 1000, 
+                "ui_type": "number" 
+            },
+            "energy_kev": { 
+                "label": "Energy [keV]",
+                "type": "number", 
+                "min": 1, 
+                "max": 100, 
+                "ui_type": "number" 
+            },
+            "beam_flux": { 
+                "label": "Beam Flux [photons/s]",
+                "type": "number", 
+                "min": 0, 
+                "max": 1e16, 
+                "ui_type": "number" 
+            },
+            "geometry": { 
+                "label": "Geometry",
+                "type": "string", 
+                "ui_type": "select", 
+                "options": ["Transmission", "Reflection"] 
+            },
+            "transmission_ratio": { 
+                "label": "Transmission Ratio",
+                "type": "number", 
+                "min": 0, 
+                "max": 1, 
+                "ui_type": "number" 
+            },
+            "sample_to_detector_distance_m": { 
+                "label": "Sample to Detector Distance [m]",
+                "type": "number", 
+                "min": 0, 
+                "max": 100, 
+                "ui_type": "number" 
+            },
+            "experiment_date": { 
+                "label": "Experiment Date [DD.MM.YYYY]",
+                "type": "string", 
+                "ui_type": "date" 
+            }
+        },
+        "detector": {
+            "detector_name": { 
+                "label": "Detector Name",
+                "type": "string", 
+                "ui_type": "text" 
+            },
+            "pixel_x_size_microns": {   
+                "label": "Pixel X Size [µm]",
+                "type": "number", 
+                "min": 0.1, 
+                "max": 1000, 
+                "ui_type": "number" 
+            },
+            "pixel_y_size_microns": { 
+                "label": "Pixel Y Size [µm]",
+                "type": "number", 
+                "min": 0.1, 
+                "max": 1000, 
+                "ui_type": "number" 
+            }
+        },
+        "data": {
+            "exposure_time_seconds": { 
+                "label": "Exposure Time [s]",
+                "type": "number", 
+                "min": 0.0001, 
+                "max": 1000, 
+                "ui_type": "number" 
+            },
+            "number_of_frames": { 
+                "label": "Number of Frames",
+                "type": "number", 
+                "min": 1, 
+                "max": 1e6, 
+                "ui_type": "number" 
+            },
+            "frame_rate_fps": { 
+                "label": "Frame Rate [fps]",
+                "type": "number", 
+                "min": 0.0001, 
+                "max": 100000, 
+                "ui_type": "number" 
+            },
+            "number_of_scans": { 
+                "label": "Number of Scans",
+                "type": "number", 
+                "min": 1, 
+                "max": 1000, 
+                "ui_type": "number" 
+            }
+        },              
+        "sample": {
+            "sample_name": { 
+                "label": "Sample Name",
+                "type": "string", 
+                "ui_type": "text" 
+            },
+            "sample_doi": { 
+                "label": "Sample DOI",
+                "type": "string", 
+                "ui_type": "text" 
+            },
+            "sample_composition": { 
+                "label": "Sample Composition",
+                "type": "string", 
+                "ui_type": "textarea" 
+            },
+            "sample_type": {
+                "label": "Sample Type",
+                "type": "string",
+                "ui_type": "select",
+                "options": [
+                "Protein", "LNP", "Buffer", "Colloids", "Polymers",
+                "Nano particles", "Liquid Crystals", "Gels", "Foams",
+                "Glassy materials", "Membrance and Thin films",
+                "Crystalline materials", "Liquid metal"
+            ]
+            },
+            "buffer_type": {
+                "label": "Buffer Type",
+                "type": "string",
+                "ui_type": "select",
+                "options": [
+                "PBS", "D2O", "MOPS", "MES", "HEPES", "Water",
+                "Citrate", "Sodium Acetate", "Tris"
+            ]
+            }
+        }
+    },
+    "ui_order": [
+        "experiment_setup",
+        "detector",
+        "sample", 
+        "data"
+    ], 
+    "ui_labels": [
+        "Experiment Setup",
+        "Detector",
+        "Sample",
+        "Data"
+    ]
+    
+}

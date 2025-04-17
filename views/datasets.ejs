@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Datasets</title>
+    <style type="text/css"> 
+        h1 {
+            color: #000000;
+        }
+        body {
+            background-color: #ececec;
+        }
+    </style>
+</head>
+<body>
+    <h1>Datasets List</h1>
+    <ul>
+        <% datasets.forEach(function(dataset) { %>
+            <li><%= dataset.name %></li>
+        <% }); %>
+    </ul>
+    <button onclick="window.location.href='/datasets'">New Dataset</button>
+</body>
+</html>

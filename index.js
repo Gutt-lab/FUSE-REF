@@ -20,7 +20,6 @@ async function startServer() {
     try {
         const _mongo_db = await MongoConfig.connect();
         const app = express();
-        console.log(path.join(__dirname, 'public'));
         app.use(json());
         app.use(cors());
 

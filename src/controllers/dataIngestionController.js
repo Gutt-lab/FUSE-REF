@@ -19,7 +19,6 @@ export class DataIngestionController {
     memoryStorage = multer.memoryStorage({
 
         destination: (req, file, cb) => {
-            console.log(file);
             if (file.fieldname === 'data_file' || file.fieldname === 'image_file') {
                 cb(null, 'uploads/');
             } else {
@@ -41,7 +40,6 @@ export class DataIngestionController {
     }});
 
     async authenticateUser(req, res) {
-        console.log(req.body);
         const { token } = req.headers;
             if (!token) {
                 return res.status(401).json({ error: 'Unauthorized: No token provided' });
@@ -66,15 +64,14 @@ export class DataIngestionController {
                 const decoded = jwt.verify(token, process.env.JWT_SECRET);
                 req.user = decoded;
             } catch (error) {
-                //return res.status(401).json({ error: 'Unauthorized: Invalid token' });
+                return res.status(401).json({ error: 'Unauthorized: Invalid token' });
             }
 
-            //const { alias } = req.user;
-            //console.log(alias);
-
+            const { alias } = req.user;
             const data = req.body;
-            const result = await this.dataIngestionService.createDocument(data);
+            const result = await this.dataIngestionService.createDocument(data, alias);
             res.status(201).json({ message: 'Document created successfully', result });
+
         } catch (error) {
             res.status(500).json({ error: 'Failed to create document' });
         }

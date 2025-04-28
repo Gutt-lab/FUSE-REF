@@ -11,14 +11,12 @@ export class DataIngestionService {
         this.storageSciebo = new StorageSciebo();
     }
 
-    async createDocument(data) {
+    async createDocument(data, alias) {
         try {
             data.files = [];
-            data.frames_integrated_image = "";
-            data.frames_integrated_data = "";
-            data.saxs_profile_image = "";
-            data.saxs_profile_data = "";
-        
+            const today = new Date();
+            data.created_on = today.toLocaleDateString('de-DE');
+            data.alias = alias;
             const result = await this.mongo_db.collection('datasets').insertOne(data);
             return result.insertedId;
         } catch (error) {

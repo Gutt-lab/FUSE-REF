@@ -9,7 +9,6 @@ export class MetricsController {
         try {
             const { year } = req.params;
             const { session_id } = req.headers;
-            console.log(year);
             if (!session_id) {
                 return res.status(401).json({ error: 'Session ID is required' });
             }
